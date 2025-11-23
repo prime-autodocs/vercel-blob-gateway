@@ -11,12 +11,12 @@ export async function POST(request: Request) {
 
   const blob = await put(file.name, file, { 
     access: "public", 
-    addRandomSuffix: false,
+    allowOverwrite: true,
     token: process.env.BLOB_READ_WRITE_TOKEN,
   });
 
   return NextResponse.json({ 
     url: blob.url,
     pathname: blob.pathname,
-     });
+  });
 }
